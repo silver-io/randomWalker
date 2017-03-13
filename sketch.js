@@ -17,8 +17,10 @@ function Walker() {
 
 
 	this.update = function() {
-	  this.acc = createVector(random(-1, 1), random(-1, 1)); // we make a new acc vector every single frame
-	  this.acc.mult(5); //vector is accelerated dramatically as the vector created is immediatelly scaled by 5
+	  var mouse = createVector(mouseX, mouseY);
+	  this.acc = p5.Vector.sub(mouse, this.pos) //the mouse position is stored in acc
+	  this.acc.mult(0.01);
+
 
 	  this.vel.add(this.acc); //acceleration changes velocity
 	  this.pos.add(this.vel); //velocity changes position
