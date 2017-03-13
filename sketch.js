@@ -12,11 +12,14 @@ function draw() {
 }
 
 function Walker() {
-	this.pos = createVector(width/2, 0); // so the ellipse starts from the top of the screen
+	this.pos = createVector(width/2, height/2); // the ellipse starts from the centre of the screen
 	this.vel = createVector(0, 0);
-	this.acc = createVector(0, 0.1);
+
 
 	this.update = function() {
+	  this.acc = createVector(random(-1, 1), random(-1, 1)); // we make a new acc vector every single frame
+	  this.acc.mult(5); //vector is accelerated dramatically as the vector created is immediatelly scaled by 5
+
 	  this.vel.add(this.acc); //acceleration changes velocity
 	  this.pos.add(this.vel); //velocity changes position
 
