@@ -7,18 +7,19 @@ function setup() {
 
 function draw() {
 	background(51);
-	w.walk();
+	w.update();
 	w.display();
 }
 
 function Walker() {
-	this.pos = createVector(width/2, height/2);
+	this.pos = createVector(width/2, 0); // so the ellipse starts from the top of the screen
+	this.vel = createVector(0, 0);
+	this.acc = createVector(0, 0.1);
 
-	this.walk = function() {
-	  
-	  this.vel = createVector(random(-5, 5), random(-5, 5));
-	  this.pos = this.pos.add(this.vel);
-	  
+	this.update = function() {
+	  this.vel.add(this.acc); //acceleration changes velocity
+	  this.pos.add(this.vel); //velocity changes position
+
 	  	}
 
 	this.display = function() {
